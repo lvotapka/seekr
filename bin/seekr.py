@@ -122,6 +122,9 @@ inp = { # contains default parameters in case they aren't included in the input 
   'inputgen_gmemceil':'64000',
   'inputgen_resolution':'0.5',
   'inputgen_cfac':'4.0',
+  'namd_special': 'namd2',
+  'charm_special': 'charmrun'
+  'mpiexec': 'mpiexec',
 
 }
 
@@ -228,6 +231,20 @@ sys_params={ # variables pertinent to the receptor/ligand
   'empty_rootdir':boolean(inp['empty_rootdir']), # if set to True, will empty the contents of the rootdir when the new file tree is made
 
 }
+
+#Save program path information to pickle
+
+program_paths={# variables that define paths to programs used by SEEKR
+  'namd_special':inp['namd_special'],
+  'charm_special':inp['charm_special'],
+  'mpiexec':inp['mpiexec'],
+
+}
+
+program_paths_filename=os.path.join(rootdir, 'program_paths.pkl')
+program_paths_file= open(program_paths_filename, 'wb')
+pickle.dump(program_paths, program_paths_file)
+program_paths_file.close
 
 #if 'remove' in sys.argv[2:]: 
 if args['remove'] == True: # then remove the entire directory as if empty_rootdir was True
