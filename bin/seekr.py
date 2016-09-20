@@ -742,7 +742,7 @@ other_necessary_files={
 }
 
 # write program paths to a pickle
-print 'namd_special', program_paths['namd_special']
+#print 'namd_special', program_paths['namd_special']
 program_paths_filename=os.path.join(sys_params['rootdir'], 'program_paths.pkl')
 program_paths_file= open(program_paths_filename, 'wb')
 pickle.dump(program_paths, program_paths_file)
