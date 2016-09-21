@@ -52,6 +52,7 @@ namd_inputs_dir = os.path.dirname(os.path.realpath(namd_inputs.__file__))
 
 #acct = "TG-CHE060073N"
 #acct = "TG-MCB140064" # My personal acct number
+acct="NONE"
 #queue = "normal"
 #namd_abrams = "/home1/01624/lvotapka/NAMD_2.9_Source/Linux-x86_64-g++/namd2"
 #namd_abrams = "/opt/namd/bin/namd2"
@@ -226,19 +227,19 @@ mpirun_rsh -export \
 
 # Stampede submission parameters
 min_params = {
-'procs':DEFAULT_NUM_PROCS,'time_str':'12:00:00', 'template':stampede_submit_template, 'acct': "TG-CHE060073N", 'queue':'normal',
+'procs':DEFAULT_NUM_PROCS,'time_str':'12:00:00', 'template':stampede_submit_template, 'acct': acct, 'queue':'normal',
 }
 
 temp_equil_params = {
-'procs':DEFAULT_NUM_PROCS,'time_str':'02:00:00', 'template':stampede_submit_template, 'acct': "TG-CHE060073N", 'queue':'normal',
+'procs':DEFAULT_NUM_PROCS,'time_str':'02:00:00', 'template':stampede_submit_template, 'acct': acct, 'queue':'normal',
 }
 
 ens_equil_params = {
-'procs':DEFAULT_NUM_PROCS,'time_str':DEFAULT_TIME_STR, 'template':stampede_submit_template, 'acct': "TG-CHE060073N", 'queue':'normal',
+'procs':DEFAULT_NUM_PROCS,'time_str':DEFAULT_TIME_STR, 'template':stampede_submit_template, 'acct': acct, 'queue':'normal',
 }
 
 fwd_rev_params = {
-'procs':DEFAULT_NUM_PROCS,'time_str':DEFAULT_TIME_STR, 'charm_special': charm_special, 'namd_special':namd_special, 'mpiexec': mpiexec,  'num_replicas':16, 'template':stampede_submit_replica_template, 'acct': "TG-CHE060073N", 'queue':'normal',
+'procs':DEFAULT_NUM_PROCS,'time_str':DEFAULT_TIME_STR, 'charm_special': charm_special, 'namd_special':namd_special, 'mpiexec': mpiexec,  'num_replicas':16, 'template':stampede_submit_replica_template, 'acct': acct", 'queue':'normal',
 }
 
 submission_template = stampede_submit_template
