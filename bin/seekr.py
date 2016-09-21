@@ -122,9 +122,6 @@ inp = { # contains default parameters in case they aren't included in the input 
   'inputgen_gmemceil':'64000',
   'inputgen_resolution':'0.5',
   'inputgen_cfac':'4.0',
-  'namd_special': 'namd2',
-  'charm_special': 'charmrun',
-  'mpiexec': 'mpiexec',
 
 }
 
@@ -743,10 +740,10 @@ other_necessary_files={
 
 # write program paths to a pickle
 #print 'namd_special', program_paths['namd_special']
-program_paths_filename=os.path.join(sys_params['rootdir'], 'program_paths.pkl')
-program_paths_file= open(program_paths_filename, 'wb')
-pickle.dump(program_paths, program_paths_file)
-program_paths_file.close
+#program_paths_filename=os.path.join(sys_params['rootdir'], 'program_paths.pkl')
+#program_paths_file= open(program_paths_filename, 'wb')
+#pickle.dump(program_paths, program_paths_file)
+#program_paths_file.close
 
 class Test_seekr(unittest.TestCase):
   # several test cases to ensure the functions in this module are working properly
