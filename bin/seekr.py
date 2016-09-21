@@ -231,12 +231,12 @@ sys_params={ # variables pertinent to the receptor/ligand
 
 #define program path variables
 
-program_paths={# variables that define paths to programs used by SEEKR
-  'namd_special':inp['namd_special'],
-  'charm_special':inp['charm_special'],
-  'mpiexec':inp['mpiexec'],
+#program_paths={# variables that define paths to programs used by SEEKR
+#  'namd_special':inp['namd_special'],
+#  'charm_special':inp['charm_special'],
+#  'mpiexec':inp['mpiexec'],
 
-}
+#}
 
 #if 'remove' in sys.argv[2:]: 
 if args['remove'] == True: # then remove the entire directory as if empty_rootdir was True
