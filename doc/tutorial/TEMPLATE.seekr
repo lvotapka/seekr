@@ -19,6 +19,16 @@ number_of_ens_equil_frames_skipped SOMETHING # how many dcd frames to skip at th
 extract_stride SOMETHING
 
 ##############################################################
+#Program path information
+##############################################################
+namd_special SOMETHING # the path to the special build of namd required for SEEKR calculations
+charm_special SOMETHING # the path to charmrun that is required for the above NAMD build
+mpiexec SOMETHING  # the path to mpiexec
+browndye_bin_dir SOMETHING # the path to the browndye bin
+inputgen_location SOMETHING
+apbs_executable SOMETHING
+
+##############################################################
 # ligand/receptor information
 ##############################################################
 lig_pdb_filename SOMETHING

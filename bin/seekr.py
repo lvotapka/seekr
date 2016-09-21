@@ -122,6 +122,9 @@ inp = { # contains default parameters in case they aren't included in the input 
   'inputgen_gmemceil':'64000',
   'inputgen_resolution':'0.5',
   'inputgen_cfac':'4.0',
+  'namd_special': 'namd2',
+  'charm_special': 'charmrun',
+  'mpiexec': 'mpiexec',
 
 }
 
@@ -226,6 +229,15 @@ sys_params={ # variables pertinent to the receptor/ligand
   'bd':boolean(inp['bd']),
   'bd_rec_pqr_filename':inp['bd_rec_pqr_filename'],
   'empty_rootdir':boolean(inp['empty_rootdir']), # if set to True, will empty the contents of the rootdir when the new file tree is made
+
+}
+
+#define program path variables
+
+program_paths={# variables that define paths to programs used by SEEKR
+  'namd_special':inp['namd_special'],
+  'charm_special':inp['charm_special'],
+  'mpiexec':inp['mpiexec'],
 
 }
 
@@ -645,7 +657,6 @@ if sys_params['md']:
 #print "md_settings:", md_settings
 
 
-
 if sys_params['bd']:
   
   bd_receptor_dry_pqr=parser.get_structure('bd_receptor_dry_pqr', sys_params['bd_rec_pqr_filename'], pqr=True)
@@ -729,6 +740,13 @@ other_necessary_files={
   'la.tcl':'/path/to/la.tcl',
   'etc':'',
 }
+
+# write program paths to a pickle
+#print 'namd_special', program_paths['namd_special']
+program_paths_filename=os.path.join(sys_params['rootdir'], 'program_paths.pkl')
+program_paths_file= open(program_paths_filename, 'wb')
+pickle.dump(program_paths, program_paths_file)
+program_paths_file.close
 
 class Test_seekr(unittest.TestCase):
   # several test cases to ensure the functions in this module are working properly
