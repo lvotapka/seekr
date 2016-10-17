@@ -302,6 +302,13 @@ for site_dict in sites:
   if 'startvx' in site_dict: startvx = float(site_dict['startvx'])
   if 'startvy' in site_dict: startvy = float(site_dict['startvy'])
   if 'startvz' in site_dict: startvz = float(site_dict['startvz'])
+  if 'radius_list' in site_dict: 
+    radius_string= site_dict['radius_list']
+    raw_radius_list= radius_string.split()
+    print 'radius list 1', raw_radius_list 
+    radius_list=map(float,raw_radius_list)
+  else: radius_list=None
+  print 'radius list' , radius_list   
   if 'hedron' in site_dict: # this is so the user can easily leave out this argument, SEEKR will take it from elsewhere in the input
     milestone_hedron = site_dict['hedron']
   else:
@@ -329,6 +336,7 @@ for site_dict in sites:
                   'siteid':"'%s'" % site_dict['key'], # have to put quotes otherwise milestones.py won't recognize it as a string
                   'absolute':absolute,
                   'k_off':boolean(inp['k_off']),
+                  'radius_list':radius_list,
                   },
 
     })
@@ -355,7 +363,8 @@ for site_dict in sites:
                   'siteid':"'%s'" % site_dict['key'], # have to put quotes otherwise milestones.py won't recognize it as a string
                   'absolute':absolute,
                   'k_off':boolean(inp['k_off']),
-                  'hedron':"'%s'" % milestone_hedron
+                  'hedron':"'%s'" % milestone_hedron,
+                  'radius_list':radius_list,
                   },
 
     })
@@ -381,6 +390,7 @@ for site_dict in sites:
                   'siteid':"'%s'" % site_dict['key'], # have to put quotes otherwise milestones.py won't recognize it as a string
                   'absolute':absolute,
                   'k_off':boolean(inp['k_off']),
+                  'radius_list':radius_list,
                   },
 
     })
@@ -403,6 +413,7 @@ for site_dict in sites:
                   'siteid':"'%s'" % site_dict['key'], # have to put quotes otherwise milestones.py won't recognize it as a string
                   'absolute':absolute,
                   'k_off':boolean(inp['k_off']),
+                  'radius_list':radius_list,
                   },
 
     })
@@ -425,7 +436,8 @@ for site_dict in sites:
                   'siteid':"'%s'" % site_dict['key'], # have to put quotes otherwise milestones.py won't recognize it as a string
                   'absolute':absolute,
                   'k_off':boolean(inp['k_off']),
-                  'hedron':"'%s'" % milestone_hedron
+                  'hedron':"'%s'" % milestone_hedron,
+                  'radius_list':radius_list,
                   },
 
     })
