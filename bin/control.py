@@ -239,7 +239,7 @@ ens_equil_params = {
 }
 
 fwd_rev_params = {
-'procs':DEFAULT_NUM_PROCS,'time_str':DEFAULT_TIME_STR, 'charm_special': charm_special, 'namd_special':namd_special, 'mpiexec': mpiexec,  'num_replicas':16, 'template':stampede_submit_replica_template, 'acct': acct", 'queue':'normal',
+'procs':DEFAULT_NUM_PROCS,'time_str':DEFAULT_TIME_STR, 'charm_special': charm_special, 'namd_special':namd_special, 'mpiexec': mpiexec,  'num_replicas':16, 'template':stampede_submit_replica_template, 'acct': acct, 'queue':'normal',
 }
 
 submission_template = stampede_submit_template
