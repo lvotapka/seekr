@@ -229,6 +229,15 @@ sys_params={ # variables pertinent to the receptor/ligand
 
 }
 
+#define program path variables
+
+#program_paths={# variables that define paths to programs used by SEEKR
+#  'namd_special':inp['namd_special'],
+#  'charm_special':inp['charm_special'],
+#  'mpiexec':inp['mpiexec'],
+
+#}
+
 #if 'remove' in sys.argv[2:]: 
 if args['remove'] == True: # then remove the entire directory as if empty_rootdir was True
   sys_params['empty_rootdir'] = True
@@ -293,6 +302,13 @@ for site_dict in sites:
   if 'startvx' in site_dict: startvx = float(site_dict['startvx'])
   if 'startvy' in site_dict: startvy = float(site_dict['startvy'])
   if 'startvz' in site_dict: startvz = float(site_dict['startvz'])
+  if 'radius_list' in site_dict: 
+    radius_string= site_dict['radius_list']
+    raw_radius_list= radius_string.split()
+    print 'radius list 1', raw_radius_list 
+    radius_list=map(float,raw_radius_list)
+  else: radius_list=None
+  print 'radius list' , radius_list   
   if 'hedron' in site_dict: # this is so the user can easily leave out this argument, SEEKR will take it from elsewhere in the input
     milestone_hedron = site_dict['hedron']
   else:
@@ -320,6 +336,7 @@ for site_dict in sites:
                   'siteid':"'%s'" % site_dict['key'], # have to put quotes otherwise milestones.py won't recognize it as a string
                   'absolute':absolute,
                   'k_off':boolean(inp['k_off']),
+                  'radius_list':radius_list,
                   },
 
     })
@@ -346,7 +363,8 @@ for site_dict in sites:
                   'siteid':"'%s'" % site_dict['key'], # have to put quotes otherwise milestones.py won't recognize it as a string
                   'absolute':absolute,
                   'k_off':boolean(inp['k_off']),
-                  'hedron':"'%s'" % milestone_hedron
+                  'hedron':"'%s'" % milestone_hedron,
+                  'radius_list':radius_list,
                   },
 
     })
@@ -372,6 +390,7 @@ for site_dict in sites:
                   'siteid':"'%s'" % site_dict['key'], # have to put quotes otherwise milestones.py won't recognize it as a string
                   'absolute':absolute,
                   'k_off':boolean(inp['k_off']),
+                  'radius_list':radius_list,
                   },
 
     })
@@ -394,6 +413,7 @@ for site_dict in sites:
                   'siteid':"'%s'" % site_dict['key'], # have to put quotes otherwise milestones.py won't recognize it as a string
                   'absolute':absolute,
                   'k_off':boolean(inp['k_off']),
+                  'radius_list':radius_list,
                   },
 
     })
@@ -416,7 +436,8 @@ for site_dict in sites:
                   'siteid':"'%s'" % site_dict['key'], # have to put quotes otherwise milestones.py won't recognize it as a string
                   'absolute':absolute,
                   'k_off':boolean(inp['k_off']),
-                  'hedron':"'%s'" % milestone_hedron
+                  'hedron':"'%s'" % milestone_hedron,
+                  'radius_list':radius_list,
                   },
 
     })
@@ -645,7 +666,6 @@ if sys_params['md']:
 #print "md_settings:", md_settings
 
 
-
 if sys_params['bd']:
   
   bd_receptor_dry_pqr=parser.get_structure('bd_receptor_dry_pqr', sys_params['bd_rec_pqr_filename'], pqr=True)
@@ -729,6 +749,13 @@ other_necessary_files={
   'la.tcl':'/path/to/la.tcl',
   'etc':'',
 }
+
+# write program paths to a pickle
+#print 'namd_special', program_paths['namd_special']
+#program_paths_filename=os.path.join(sys_params['rootdir'], 'program_paths.pkl')
+#program_paths_file= open(program_paths_filename, 'wb')
+#pickle.dump(program_paths, program_paths_file)
+#program_paths_file.close
 
 class Test_seekr(unittest.TestCase):
   # several test cases to ensure the functions in this module are working properly

@@ -25,7 +25,7 @@ apbs_input_template_location = os.path.join(self_path, 'apbs_input.template')
 
 test_inputgen_location = "/soft/linux/pdb2pqr-1.8/src/inputgen.py"
 test_apbs_location = "apbs" #"/soft/linux/atlas_v6/atlas_package/bin/apbs"
-test_pqr_filename = "/extra/banzai/lvotapka/projects/sod_mdbd/structure/1cbj.pqr"
+test_pqr_filename = "../test/1cbj.pqr"
 
 default_apbs_params = {
 'pqr':'',
